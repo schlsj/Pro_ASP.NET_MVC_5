@@ -129,10 +129,72 @@ namespace UrlsAndRoutes
             //    },
             //    new[] { "UrlsAndRoutes.Controllers" });
 
-            //15.8.1 启用和运用属性路由
+            ////15.8.1 启用和运用属性路由
+            //routes.MapMvcAttributeRoutes();
+            //routes.MapRoute("Default", "{controller}/{action}/{id}",
+            //    new {controller = "Home", action = "index", id = UrlParameter.Optional},
+            //    new[] {"UrlsAndRoutes.Controllers"});
+
+            ////15.8.1 启用和运用属性路由
+            //routes.MapMvcAttributeRoutes();
+            //routes.MapRoute("MyRoute", "{controller}/{action}/{id}",
+            //    new { controller = "Home", action = "index", id = UrlParameter.Optional });
+
+            ////15.8.1 以当前路由为基点
+            //routes.MapMvcAttributeRoutes();
+            //routes.MapRoute("NewRoute", "App/Do{action}", new {controller = "Home"});
+            //routes.MapRoute("MyRoute", "{controller}/{action}/{id}",
+            //    new { controller = "Home", action = "index" ,id=UrlParameter.Optional});
+
+            ////16.x 
+            //routes.MapMvcAttributeRoutes();
+            //routes.MapRoute("MyRoute", "{controller}/{action}/{id}",
+            //    new { controller = "Home", action = "index", id = UrlParameter.Optional });
+
+            ////16.x 
+            //routes.MapMvcAttributeRoutes();
+            //routes.MapRoute("MyRoute", "{controller}/{action}");
+            //routes.MapRoute("MyOtherRoute", "App/{action}",new {controller="Home"});
+
+            ////16.3 使用自定义路由 
+            //routes.MapMvcAttributeRoutes();
+            //routes.Add(new LegacyRoute("~/someOldRoute/xxx", "~/OtherRoute/Like/www.baidu.com"));
+            //routes.MapRoute("MyRoute", "{controller}/{action}");
+            //routes.MapRoute("MyOtherRoute", "App/{action}", new { controller = "Home" });
+
+            //16.3 使用自定义路由处理器 
+            //routes.MapMvcAttributeRoutes();
+            //routes.Add(new Route("SayHello",new CustomRouteHandler()));
+            //routes.Add(new LegacyRoute("~/someOldRoute/xxx", "~/OtherRoute/Like/www.baidu.com"));
+            //routes.MapRoute("MyRoute", "{controller}/{action}");
+            //routes.MapRoute("MyOtherRoute", "App/{action}", new { controller = "Home" });
+
+            ////16.4 增加优先路由，与Area中的命名空间区分 
+            //routes.MapMvcAttributeRoutes();
+            //routes.Add(new Route("SayHello",new CustomRouteHandler()));
+            //routes.Add(new LegacyRoute("~/someOldRoute/xxx", "~/OtherRoute/Like/www.baidu.com"));
+            //routes.MapRoute("MyRoute", "{controller}/{action}", null, new[]{"UrlsAndRoutes.Controllers"});
+            //routes.MapRoute("MyOtherRoute", "App/{action}", new {controller = "Home"},
+            //    new[] {"UrlsAndRoutes.Controllers"});
+
+            ////16.5 为磁盘文件指定路由 
+            //routes.RouteExistingFiles = true;
+            //routes.MapMvcAttributeRoutes();
+            //routes.MapRoute("DiskFile", "Content/StaticContent.html", new {Controller = "Customer", action = "List"});
+            //routes.Add(new Route("SayHello",new CustomRouteHandler()));
+            //routes.Add(new LegacyRoute("~/someOldRoute/xxx", "~/OtherRoute/Like/www.baidu.com"));
+            //routes.MapRoute("MyRoute", "{controller}/{action}", null, new[]{"UrlsAndRoutes.Controllers"});
+            //routes.MapRoute("MyOtherRoute", "App/{action}", new {controller = "Home"},
+            //    new[] {"UrlsAndRoutes.Controllers"});
+
+            ////16.5 绕过路由系统 
+            routes.RouteExistingFiles = true;
             routes.MapMvcAttributeRoutes();
-            routes.MapRoute("Default", "{controller}/{action}/{id}",
-                new {controller = "Home", action = "index", id = UrlParameter.Optional},
+            routes.IgnoreRoute("Content/{filename}.html");
+            routes.Add(new Route("SayHello",new CustomRouteHandler()));
+            routes.Add(new LegacyRoute("~/someOldRoute/xxx", "~/OtherRoute/Like/www.baidu.com"));
+            routes.MapRoute("MyRoute", "{controller}/{action}", null, new[]{"UrlsAndRoutes.Controllers"});
+            routes.MapRoute("MyOtherRoute", "App/{action}", new {controller = "Home"},
                 new[] {"UrlsAndRoutes.Controllers"});
         }
     }

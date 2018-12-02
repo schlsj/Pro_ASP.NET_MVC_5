@@ -21,6 +21,7 @@ namespace UrlsAndRoutes.Controllers
             ViewBag.Controller = "Home";
             ViewBag.Action = "About";
             return View("ActionName");
+            var test = RedirectToAction("Index");
         }
 
         ////15.6.1
@@ -57,6 +58,14 @@ namespace UrlsAndRoutes.Controllers
             ViewBag.CustomVariable = iD;
             return View();
         }
+
+        //到十七章再来刷
+        //public ViewResult MyActionMethod()
+        //{
+        //    string myActionUrl = Url.Action("Index", new {id = "MyID"});
+        //    string myRouteUrl = Url.RouteUrl(new {controller = "Home", action = "Index"});
+        //    return View();
+        //}
 
         public void Test()
         {

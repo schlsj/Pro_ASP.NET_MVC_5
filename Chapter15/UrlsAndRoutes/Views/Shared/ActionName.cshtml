@@ -12,6 +12,18 @@
 </head>
 <body>
     <div>The controller is: @ViewBag.Controller</div>
-    <div>The action is: @ViewBag.Action</div>
+<div>The action is: @ViewBag.Action</div>
+
+<div>@Html.ActionLink("默认控制器路由","CustomVariable")</div>
+<div>@Html.ActionLink("指定控制器路由，并忽略尾部的默认值序列", "Index","Admin")</div>
+    <div>@Html.ActionLink("使用路由注解属性创建输出url", "Index", "Customer")  虽然Url：Customer/Index无法由路由匹配（被注解属性屏蔽了），但是(..,"Index","Customer")符合出站Url匹配，就能定位到控制器方法。</div>
+<div>@Html.ActionLink("传递额外值.会根据额外值是否有接收值而改变连接", "CustomVariable",new {ID="Hello"})  </div>
+<div>@Html.ActionLink("生成带属性的xml元素","Index","Home",null,new {id="myAnchorID",@class="myCSSClass"})</div>
+    <div>@Html.ActionLink("全限定名，不推荐使用", "Index", "Home","https","myserver.mydomain.com","myFragmentName",new {id="MyId"}, new { id = "myAnchorID", @class = "myCSSClass" })</div>
+<div>16.2.6 只生成URL
+    @Url.Action( "Index", "Home",  new { id = "MyId" })</div>
+    <div>@Html.RouteLink("通过路由名称来指定路由，不推荐. 貌似违反了Default-Only variable的值","MyOtherRoute", "Index", "Customer")</div>
+<div>16.3.2 
+    @Html.ActionLink("自定义出站URL", "GetLegacyUrl", new { legacyUrl = "~/someOldRoute/xxx"})</div>
 </body>
 </html>

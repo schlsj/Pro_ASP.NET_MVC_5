@@ -2,6 +2,7 @@
 
 namespace UrlsAndRoutes.Controllers
 {
+    [RouteArea("Services")]
     [RoutePrefix("Users")]
     public class CustomerController : Controller
     {
@@ -34,12 +35,12 @@ namespace UrlsAndRoutes.Controllers
         }
 
         //CustomVariable
-        public ActionResult CustomVariable(string iD)
-        {
-            ViewBag.Controller = "Home";
-            ViewBag.Action = "CustomVariable";
-            ViewBag.CustomVariable = iD;
-            return View();
-        }
+        //public ActionResult CustomVariable(string iD)
+        //{
+        //    ViewBag.Controller = "Home";
+        //    ViewBag.Action = "CustomVariable";
+        //    ViewBag.CustomVariable = iD;
+        //    return View();
+        //}
     }
 }
