@@ -1,0 +1,20 @@
+﻿@model DateTime
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <p>The day is: @Model.DayOfWeek (Model).</p>
+        <p>The day is: @ViewBag.Date.DayOfWeek (ViewBag).</p>
+        <p>The message is: @ViewBag.Message .</p>
+    </div>
+</body>
+</html>
