@@ -1,0 +1,18 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Range Error</title>
+</head>
+<body>
+<h2>Sorry</h2>
+<p>The value @Model was out of the expected range.</p>
+<p>The value @(((ArgumentOutOfRangeException)Model.Exception).ActualValue) was out of the expected range.</p>
+<p>@Html.ActionLink("Change value and try again","Index")</p>
+</body>
+</html>
