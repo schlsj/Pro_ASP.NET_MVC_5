@@ -1,0 +1,105 @@
+﻿@using HelperMethods.Models
+@model HelperMethods.Models.Person
+
+@{
+    ViewBag.Title = "CreatePerson";
+    Layout = "/Views/Shared/_Layout.cshtml";
+    Html.EnableClientValidation(false);
+}
+
+<h2>Create Person: @Html.LabelForModel()</h2>
+<form action="/Home/CreatePerson" method="post">
+    <div class="dataElem">
+        <label>PersonId</label>
+        <input name="personId" value="@Model.PersonId"/>
+    </div>
+    <div class="dataElem">
+        <label>First Name</label>
+        <input name="FirstName" value="@Model.FirstName"/>
+    </div>
+    <div class="dataElem">
+        <label>Last Name</label>
+        <input name="LastName" value="@Model.LastName"/>
+    </div>
+    <input type="submit" value="Submit"/>
+</form>
+
+@using (Html.BeginForm("CreatePerson","Home",new {id="MyIdValue"},FormMethod.Post,new {@class="personClass",data_formType="person"}))
+{
+    <div class="dataElem">
+        <label>PersonId</label>
+        <input name="personId" value="@Model.PersonId"/>
+    </div>
+    <div class="dataElem">
+        <label>First Name</label>
+        <input name="FirstName" value="@Model.FirstName"/>
+    </div>
+    <div class="dataElem">
+        <label>Last Name</label>
+        <input name="LastName" value="@Model.LastName"/>
+    </div>
+    <input type="submit" value="Submit"/>
+}
+
+@using (Html.BeginRouteForm("FormRoute",new {}, FormMethod.Post,new {@class="personClass",data_formType="person"}))
+{
+    <div class="dataElem">
+        <label>PersonId</label>
+        @Html.TextBox("personId",@Model.PersonId)
+    </div>
+    <div class="dataElem">
+        <label>First Name</label>
+        @Html.TextBox("FirstName")
+    </div>
+    <div class="dataElem">
+        <label>Last Name</label>
+        @Html.TextBoxFor(m=>m.LastName)
+    </div>
+    <div class="dataElem">
+        <label>Role</label>
+        @Html.DropDownListFor(m=>m.Role,new SelectList(Enum.GetNames(typeof(Role))))
+    </div>
+    <input type="submit" value="Submit"/>
+}
+
+@using (Html.BeginRouteForm("FormRoute",new {}, FormMethod.Post,new {@class="personClass",data_formType="person"}))
+{
+    <div class="dataElem">
+        <label>PersonId</label>
+        @Html.Editor("PersonId")
+    </div>
+    <div class="dataElem">
+        <label>First Name</label>
+        @Html.Editor("FirstName")
+    </div>
+    <div class="dataElem">
+        <label>Last Name</label>
+        @Html.EditorFor(m=>m.LastName)
+    </div>
+    <div class="dataElem">
+        <label>Role</label>
+        @Html.EditorFor(m=>m.Role)
+    </div>
+    <div class="dataElem">
+        @Html.LabelFor(m=>m.BirthDate)
+        @Html.EditorFor(m=>m.BirthDate)
+    </div>
+    <input type="submit" value="Submit"/>
+}
+
+@using (Html.BeginRouteForm("FormRoute",new {}, FormMethod.Post,new {@class="personClass",data_formType="person"}))
+{
+    @Html.EditorForModel()
+    <input type="submit" value="Submit"/>
+}
+
+@using (Html.BeginRouteForm("FormRoute",new {}, FormMethod.Post,new {@class="personClass",data_formType="person"}))
+{
+    <div class="column">
+        @Html.EditorForModel()
+    </div>
+    <div class="column">
+        @Html.EditorFor(m=>m.HomeAddress)
+    </div>
+    <input type="submit" value="Submit"/>
+}
